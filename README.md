@@ -34,7 +34,7 @@
 </pre>
 #### Package Struct
 <pre>
-######   프로젝트명 : Crypto_Coin_Service_03
+🎉   프로젝트명 : Crypto_Coin_Service_03
 #########   루트디렉토리 : ai_service, static, templates
 #########   루트파일명 : Web_Service_AI.py (웹 라우팅)
 #########   디렉토리 구조
