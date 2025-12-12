@@ -2,6 +2,9 @@ import base64
 import numpy as np
 from flask import Flask,render_template,request,json,jsonify
 from ai_service.Crypto_Coin_Service import input_request
+from movie_review.Naver_NLP_Service import getPredict
+#NLP 임포트
+import movie_review.Naver_NLP_Predict as nnp
 app = Flask(__name__)
 #**  after  코인명 추가시 리스트 추가
 COIN_NAMES = ["BTC","ETH","XRP"]
@@ -33,4 +36,12 @@ def user_data():
     report = crypto_coin_anal(coinname,timegap)
     print(report)
     return jsonify(report)
+@app.route("/page/review_main")
+def ret_mainpage():
+    return  render_template("nlp_review.html")
+@app.route("/movie_review",methods=["POST"])
+def movie_review_pred():
+    user_data = request.get_json()
+    return jsonify({"predict":getPredict(user_data["send_text"])})
+    #return getPredict(user_data)
 app.run("127.0.0.1",4321,True)
